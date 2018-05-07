@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>WarsawJS Slides: Template</title>
+    <title>WebRTC co, jak z czym</title>
 
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -16,10 +16,11 @@
     <!-- Prism.js -->
     <link rel="stylesheet" href="vendors/prism/prism.css"/>
     <link rel="stylesheet" href="modules/custom-prism.css"/>
+    <link rel="stylesheet" href="modules/custom-webrtc.css"/>
 </head>
 <body class="shower list">
     <header class="caption">
-        <h1>WarsawJS Slides: Template</h1>
+        <h1>WarsawJS Slides: WebRTC co, jak z czym</h1>
         <p>We talk about JavaScript. Each month in Warsaw, Poland.</p>
     </header>
 
@@ -30,296 +31,149 @@
         </div>
         <div class="details">
             <!-- 1. Avatar -->
-            <img src="pictures/my-avatar.jpg" alt="Speaker"/>
+            <img src="pictures/trzeznik.jpg" width="150" height="150" alt="Speaker"/>
 
             <!-- 2. Speaker -->
-            <h2>Speaker name</h2>
+            <h2>Tomasz Rzeźnik</h2>
 
             <!-- 3. Presentation title -->
-            <h2><strong>"WarsawJS Slides: Template" [PL/EN]</strong></h2>
+            <h2><strong>"WebRTC co, jak z czym" PL</strong></h2>
 
             <!-- 4. Presentation date -->
-            <h2>XXXX-XX-XX</h2>
+            <h2>2017-05-09</h2>
 
             <!-- 5. Contact the speaker -->
-            <h2><a href="http://twitter.com/speaker">@speaker</a></h2>
+            <h2><a href="mailto:rzeznik.tom@gmail.com">rzeznik.tom@gmail.com</a></h2>
+        </div>
+    </section>
+
+
+
+    <section class="slide compact title-box">
+        <p><img src="pictures/webRTC-logo.svg" class="title-box__webrtc-logo" alt="webRTC logo" /></p>
+        <h1 class="title-box__header">co, jak z czym</h1>
+    </section>
+
+    <section class="slide compact rtc-slide rtc-flex rtc-ff">
+        <h1 style="margin-bottom: 50px;">What is WebRTC</h1>
+        <h3>A set of JavaScript APIs in the browser to enable peer-to-peer, real-time media and data exchange.</h3>
+    </section>
+    <section class="slide compact rtc-slide rtc-flex rtc-ff">
+        <h1 style="margin-bottom: 50px;">What does WebRTC provide?</h1>
+        <ul class="">
+            <li>Open Source, no royalties, license fees</li>
+            <li>Real-time flexible voice, video and data framework in cross platform</li>
+            <li>Standard Web APIs Interoperable between browsers</li>
+            <li>No Proprietary plug-in</li>
+            <li>Security</li>
+        </ul>
+    </section>
+
+    <section class="slide compact rtc-slide">
+        <h1 style="font-size: 24px;">WebRTC across platforms</h1>
+        <div class="supported-box">
+            <h4 class="fancy"><span>Supported browsers & platforms</span></h4>
+            <div class="supported-list">
+                <div class="supported-item">
+                    <img class="icon" src="pictures/icons/logo/Chrome.svg" />
+                    <p>Chrome</p>
+                </div>
+                <div class="supported-item">
+                    <img class="icon" src="pictures/icons/logo/Firefox.svg" />
+                    <p>Firefox</p>
+                </div>
+                <div class="supported-item">
+                    <img class="icon" src="pictures/icons/logo/Opera.svg" />
+                    <p>Opera</p>
+                </div>
+                <div class="supported-item">
+                    <img class="icon" src="pictures/icons/logo/Android.svg" />
+                    <p>Android</p>
+                </div>
+                <div class="supported-item">
+                    <img class="icon" src="pictures/icons/logo/Apple.svg" />
+                    <p>iOS</p>
+                </div>
+            </div>
+        </div>
+        <div class="rtc-flex supported-box next">
+            <div class="supported-beside">
+                <h4 class="fancy"><span>Not supported</span></h4>
+                <div class="supported-list">
+                    <div class="supported-item">
+                        <span class="strikethrough"><img class="icon" src="pictures/icons/logo/Internet_Explorer.svg" /></span>
+                        <p>IE</p>
+                    </div>
+                    <div class="supported-item">
+                        <span class="strikethrough"><img class="icon" src="pictures/icons/logo/Safari.png" /></span>
+                        <p>Safari</p>
+                    </div>
+                </div>
+            </div>
+            <div class="supported-beside next">
+                <h4 class="fancy"><span>Supported in a different way</span></h4>
+                <div class="supported-list">
+                    <div class="supported-item">
+                        <img class="icon" src="pictures/icons/logo/Microsoft_Edge.svg" />
+                        <p>Edge</p>
+                    </div>
+                    <div class="supported-item">
+                        <img class="icon next question-mark-icon" src="pictures/icons//QuestionMark.svg" />
+                    </div>
+                    <div class="supported-item">
+                        <p class="next">ORTC</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="slide compact">
-        <h2>TODO: Please update slides:</h2>
-        <ul>
-            <li>rename project at <mark>GitHub</mark> with snake-case convention</li>
-            <li><mark>description</mark> and <mark>link</mark> on GitHub repository profile</li>
-            <li>link to <mark>"Fork me on GitHub"</mark> on the bottom of document</li>
-            <li>setup presentation title in
-                <ul>
-                    <li><mark>&lt;title&gt;</mark> tag on the top of document in <mark>&lt;head&gt;</mark> tag</li>
-                    <li><mark>README.md</mark> file</li>
-                    <li><mark>&lt;h1&gt;</mark> tag at <mark>&lt;header&gt;</mark> tag on the top of document</li>
-                </ul>
-            </li>
-        </ul>
+        <h1>Three main RTC components</h1>
+        <div class="rtc-flex main-components">
+            <ul class="">
+                <li>MediaStream</li>
+                <li>RTCPeerConnection</li>
+                <li>RTCDataChannel</li>
+            </ul>
+        </div>
     </section>
 
     <section class="slide compact">
-        <h2>List Navigation</h2>
-        <ol>
-            <li>Ennui keffiyeh thundercats</li>
-            <li class="next">Jean shorts biodiesel</li>
-            <li class="next">Terry richardson, swag blog</li>
-            <li class="next">Locavore umami vegan helvetica</li>
-            <li class="next">Fingerstache kale chips</li>
-        </ol>
-        <p class="next">Before they sold out master</p>
+        <h1>MediaStream (aka getUserMedia)</h1>
+        <div class="rtc-flex-center">
+            <img class="media-stream-img" src="pictures/media-stream.png" />
+        </div>
     </section>
 
     <section class="slide compact">
-        <h2>Slide Header</h2>
-
-        <p>Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch letterpress.</p>
-        <p>Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid four loko quinoa.</p>
-        <p class="note">Echo Park 8-bit sustainable umami deep v Kickstarter.</p>
+        <h1>RTCPeerConnection</h1>
+        <div class="rtc-flex-center">
+            <img class="media-stream-img" src="pictures/webrtc-architecture.png" />
+        </div>
     </section>
 
     <section class="slide compact">
-        <h2>Inline Elements</h2>
+        <h1>RTCDataChannel</h1>
+        <div class="rtc-flex-center">
 
-        <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-            <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-            <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-            <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-            <mark>leggings</mark>
-            skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-            <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-        </p>
-
-        <footer class="footer">
-            <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-                <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-                <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-                <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-                <mark>leggings</mark>
-                skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-                <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-            </p>
-        </footer>
+        </div>
     </section>
 
     <section class="slide compact">
-        <h2>Columns</h2>
-        <p class="double">Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch American Apparel letterpress. Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid American Apparel four loko quinoa. Echo Park 8-bit sustainable.</p>
-    </section>
-
-    <section class="slide">
-        <h2>Quotes</h2>
-        <blockquote>
-            <p>Flannel bicycle rights locavore selfies skateboard. Authentic fanny pack paleo four loko bespoke. Artisan tattooed chia XOXO ennui, lomo disrupt 8-bit art party Tumblr scenester.</p>
-        </blockquote>
-        <figure>
-            <blockquote>
-                <p>Post-ironic fashion axe flexitarian, Tonx narwhal messenger bag Tumblr. Portland gentrify deep v kale chips literally.</p>
-            </blockquote>
-            <figcaption>Yours Truly</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide compact">
-        <h2>Nested Lists</h2>
-        <ol>
-            <li>Literally viral vegan, ugh drinking vinegar photo booth</li>
-            <li>Wes Anderson chillwave Marfa pour-over Etsy banh mi</li>
-            <li>Ethnic polaroid lo-fi iPhone ennui
-                <ul>
-                    <li>Yr wayfarers before they sold out Kickstarter asymmetrical</li>
-                    <li>Irony flexitarian readymade quinoa, kogi bespoke meggings narwhal</li>
-                    <li>Skateboard Etsy twee artisan Echo Park</li>
-                </ul>
-            </li>
-            <li>Tonx kitsch fingerstache readymade, retro single-origin coffee</li>
-        </ol>
-    </section>
-
-    <section class="slide compact">
-        <h2>Simple Table</h2>
-        <table>
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
-    </section>
-
-    <section class="slide compact">
-        <h2>Striped Table</h2>
-        <table class="striped">
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
-    </section>
-
-    <section class="slide prism">
-        <h2>Listing Slide</h2>
-
-        <pre style="font-size: 45px;" class="language-javascript line-numbers">
-            <code>
-                function wrap(value) {
-                    return function () {
-                        return value;
-                    }
-                }
-
-                function bind(monad, f) {
-                    return f(monad());
-                }
-            </code>
-        </pre>
-    </section>
-
-    <section class="slide prism">
-        <pre style="font-size: 30px;" class="language-javascript line-numbers">
-            <code>
-                var monad = wrap('cookie');
-                bind(monad, (value) => {
-                    console.info(value);
-                    return wrap(value);
-                });
-                monad = bind(monad, (value) => {
-                    return wrap({ type: value });
-                });
-                bind(monad, (value) => {
-                    console.log(value);
-                    return wrap(value);
-                });
-            </code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout"><a href="">Linked</a> Shout</h2>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout grow">Effect: Growing Shout</h2>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout shrink">Effect: Shrinking Shout</h2>
-    </section>
-
-    <section class="slide">
-        <figure>
-            <img class="cover" src="vendors/shower-ribbon/pictures/exact.png" alt="">
-            <figcaption class="white">Copyright © 2016 <a href="">Yours Truly</a>, Famous Inc.</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/tall.png" alt="">
-    </section>
-
-    <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/wide.png" alt="">
-    </section>
-
-    <section class="slide white">
-        <img class="place top left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-
-        <img class="place left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-
-        <img class="place bottom left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-    </section>
-
-    <section class="slide" data-timing="00:03">
-        <h3 class="shout">Automatic switch slide after <strong>3 secs</strong> ...</h3>
-    </section>
-
-    <section class="slide">
-        <h3 class="shout">See you next month at WarsawJS</h3>
+        <h1>Abstract Signaling</h1>
+        <div class="rtc-flex">
+            <ul class="">
+                <li>Need to exchange "session descriptop" objects:
+                    <ul class="">
+                        <li>What formats I support, what I want to send</li>
+                        <li>Network information for peer-to-peer setup</li>
+                    </ul>
+                </li>
+                <li>Can use any messaging mechanism</li>
+                <li>Can use any messaging protocal</li>
+            </ul>
+        </div>
     </section>
 
     <div class="progress"></div>
