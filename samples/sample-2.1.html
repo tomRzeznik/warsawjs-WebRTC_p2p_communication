@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+</head>
+<body>
+<div style="display: flex; justify-content: space-around; align-items: center;">
+    <div>
+        <h1>Local video</h1>
+        <video id="local-video" width="400" autoplay></video>
+    </div>
+    <div>
+        <h1>Remote video</h1>
+        <video id="remote-video" width="400" autoplay></video>
+    </div>
+</div>
+<script>
+    const servers = null;
+    const alice = new RTCPeerConnection(servers);
+    const bob = new RTCPeerConnection(servers);
+
+    alice.onicecandidate = e => {
+        if(e.candidate) {
+            bob.addIceCandidate(e.candidate);
+        }
+    };
+
+    bob.onicecandidate = e => {
+        if(e.candidate) {
+            alice.addIceCandidate(e.candidate);
+        }
+    };
+
+    navigator.mediaDevices.getUserMedia({
+        video: true
+    })
+    .then(stream => {
+        document.getElementById("local-video").srcObject = stream;
+        alice.addStream(stream);
+
+        return alice.createOffer();
+    })
+    .then(offer => alice.setLocalDescription(new RTCSessionDescription(offer)))
+    .then(() => bob.setRemoteDescription(alice.localDescription))
+    .then(() => bob.createAnswer())
+    .then(answer => bob.setLocalDescription(new RTCSessionDescription(answer)))
+    .then(() => alice.setRemoteDescription(bob.localDescription));
+
+    bob.ontrack = e => {
+        document.getElementById("remote-video").srcObject = e.streams[0];
+    };
+</script>
+</body>

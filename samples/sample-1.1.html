@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+</head>
+<body>
+    <video id="local-video" autoplay></video>
+    <script>
+        navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true
+        })
+        .then(stream => {
+            const testVideo = document.getElementById('local-video');
+
+            testVideo.srcObject = stream;
+        });
+    </script>
+</body>

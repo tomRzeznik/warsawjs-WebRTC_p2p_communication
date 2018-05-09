@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>WebRTC co, jak z czym</title>
+    <title>WebRTC: Overview</title>
 
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -37,38 +37,52 @@
             <h2>Tomasz Rzeźnik</h2>
 
             <!-- 3. Presentation title -->
-            <h2><strong>"WebRTC co, jak z czym" PL</strong></h2>
+            <h2><strong>"WebRTC, komunikacja peer-to-peer." PL</strong></h2>
 
             <!-- 4. Presentation date -->
-            <h2>2017-05-09</h2>
+            <h2>2018-10-10</h2>
 
             <!-- 5. Contact the speaker -->
             <h2><a href="mailto:rzeznik.tom@gmail.com">rzeznik.tom@gmail.com</a></h2>
         </div>
     </section>
 
-
-
     <section class="slide compact title-box">
         <p><img src="pictures/webRTC-logo.svg" class="title-box__webrtc-logo" alt="webRTC logo" /></p>
-        <h1 class="title-box__header">co, jak z czym</h1>
+        <h1 class="title">Web <span style="font-weight: 400;">Real-Time</span> Communication</h1>
     </section>
 
     <section class="slide compact rtc-slide rtc-flex rtc-ff">
         <h1 style="margin-bottom: 50px;">What is WebRTC</h1>
         <h3>A set of JavaScript APIs in the browser to enable peer-to-peer, real-time media and data exchange.</h3>
     </section>
-    <section class="slide compact rtc-slide rtc-flex rtc-ff">
-        <h1 style="margin-bottom: 50px;">What does WebRTC provide?</h1>
-        <ul class="">
-            <li>Open Source, no royalties, license fees</li>
-            <li>Real-time flexible voice, video and data framework in cross platform</li>
-            <li>Standard Web APIs Interoperable between browsers, W3C, IETF</li>
-            <li>No Proprietary plug-in</li>
-            <li>Security</li>
-        </ul>
+    <section class="slide compact">
+        <h1>Adapter</h1>
+        <div class="rtc-flex" style="justify-content: space-between;">
+            <div>
+                <p>Same code in all browsers <a href="https://github.com/webrtc/adapter">adapter.js </a></p>
+                <ul class="">
+                    <li>Remove vendor prefixes</li>
+                    <li>Abstracts Chrome/Firefox differences</li>
+                    <li>Minimizes effects of spec churn</li>
+                </ul>
+                
+            </div>
+            <div>
+                <img src="pictures/shim.jpg" width="300" />
+            </div>
+        </div>
+        <div class="links">
+            <p><a href="https://github.com/webrtc/adapter">Github</a> | npm install webrtc-adapter | bower install webrtc-adapter<br/>
+            <a href="https://webrtc.github.io/adapter/adapter-latest.js">adapter-latest.js</a></p>
+        </div>
     </section>
-
+    <section class="slide compact">
+        <p><a href="https://github.com/webrtc/adapter">Adapter.js </a> is the glue that sticks your code to the different browser implementations of WebRTC.</p>
+        <div class="rtc-flex" style="justify-content: center;">
+            <img src="pictures/adapterjs_shim.jpg"/>
+        </div>
+    </section>
     <section class="slide compact rtc-slide">
         <h1 style="font-size: 24px;">WebRTC across platforms</h1>
         <div class="supported-box">
@@ -96,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="rtc-flex supported-box next">
+        <div class="rtc-flex supported-box ">
             <div class="supported-beside">
                 <h4 class="fancy"><span>Not supported</span></h4>
                 <div class="supported-list">
@@ -118,25 +132,16 @@
                         <p>Edge</p>
                     </div>
                     <div class="supported-item">
-                        <img class="icon next question-mark-icon" src="pictures/icons//QuestionMark.svg" />
+                        <img class="icon question-mark-icon" src="pictures/icons//QuestionMark.svg" />
                     </div>
                     <div class="supported-item">
-                        <p class="next">ORTC</p>
+                        <p class="">ORTC</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="slide compact">
-        <h1>Adapter</h1>
-        <p>Same code in all browsers <a href="https://github.com/webrtc/adapter">adapter.js </a></p>
-        <ul class="">
-            <li>Remove vendor prefixes</li>
-            <li>Abstracts Chrome/Firefox differences</li>
-            <li>Minimizes effects of spec churn</li>
-        </ul>
-    </section>
     <section class="slide compact rtc-slide">
         <div class="rtc-flex-center" style="height: 100%;">
             <h3>WebRTC API</h3>
@@ -151,15 +156,75 @@
                 <li>RTCDataChannel</li>
             </ul>
         </div>
-        
     </section>
 
     <section class="slide compact" style="position: relative;">
-        <h1>MediaStream (aka getUserMedia)</h1>
+        <h1>MediaStream</h1>
         <div class="rtc-flex-center">
             <img class="media-stream-img" src="pictures/media-stream.png" />
         </div>
-        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/getusermedia/" target="_blank">simpl.info/getusermedia/</a></p>
+
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>MediaDevices.getUserMedia()</h1>
+
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                const constraints = { video: true, audio: true };
+
+                navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    const localVideo = document.getElementById('local-video');
+                    localVideo.srcObject = stream;
+                })
+                .catch(error => {
+                    console.log("navigator.mediaDevices.getUserMedia error: ", error);
+                });
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>Video capability</h1>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                {
+                    audio: true,
+                    video: {
+                        width: { min: 1024, ideal: 1280, max: 1920 },
+                        height: { min: 776, ideal: 720, max: 1080 }
+                    }
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>Video on mobile devices</h1>
+        <h3>Access to front camera, if one is available</h3>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                {
+                    video: { facingMode: "user" }
+                }
+            </code>
+        </pre>
+        <h3>Access rear camera</h3>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                {
+                    video: { facingMode: { exact: "environment" } }
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <div class="rtc-flex-center" style="flex-direction: column; height: 80%;">
+            <h1>Sample: 1.1</h1>
+            <h1>Sample: 1.2</h1>
+        </div>
     </section>
 
     <section class="slide compact" style="position: relative;">
@@ -167,7 +232,99 @@
         <div class="rtc-flex-center">
             <img style="width: 60%;"  src="pictures/webrtc-architecture.png" />
         </div>
-        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/rtcpeerconnection/" target="_blank">simpl.info/rtcpeerconnection/</a></p>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection: P2P Connection Between Clients</h1>
+        <div class="rtc-flex-center">
+            <img style="width: 80%;"  src="pictures/p2p-connection.png" />
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection: Key Methods</h1>
+        <div style="font-size: 16px;">
+            <p>• RTCPeerConnection() – constructor, returns a new RTCPeerConnection object</p>
+            <p>• .addStream(mediaStream) – attaches a MediaStream as a local audio / video source</p>
+            <p>• .createOffer() – creates offer session description</p>
+            <p>• .createAnswer() – creates answer session description</p>
+            <p>• .setLocalDescription(description) – sets description as local session description</p>
+            <p>• .setRemoteDescription(description) – sets description as remote session description</p>
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>Signaling plane</h1>
+        <p>Signaling is the process of coordinating communication and is use to exchange information:</p>
+        <div style="font-size: 16px;">
+            <p>– Session control messages used to open or close communication.</p>
+            <p>– Error messages. – Media metadata such as codec settings, bandwidth and media types.</p>
+            <p>– Key data, used to establish secure connections.</p>
+            <p>– Network data, such as a host's IP address and port as seen by the outside world.</p>
+        </div>
+    </section>
+    <section class="slide compact" style="position: relative;">
+        <h1>SDP structure</h1>
+        <div class="rtc-flex-center">
+            <img style="width: 60%;"  src="pictures/SDP_1.png" />
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>SDP structure (conti.)</h1>
+        <div class="rtc-flex-center">
+            <img style="width: 60%;"  src="pictures/SDP_2.png" />
+        </div>
+    </section>
+    
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection: Connection Establishment</h1>
+        <div class="rtc-flex-center">
+            <img style="width: 80%;"  src="pictures/connection-establishment.png" />
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection: Connection Establishment</h1>
+        <div class="rtc-flex-center">
+            <img style="width: 50%;"  src="pictures/webrtc-complete-diagram.png" />
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <div class="rtc-flex-center" style="flex-direction: column; height: 80%;">
+            <h1>Sample: 2.1</h1>
+        </div>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection (conti.)</h1>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                const servers = null;
+                const alice = new RTCPeerConnection(servers);
+                const bob = new RTCPeerConnection(servers);
+            </code>
+        </pre>
+        <p style="position: absolute; bottom: 0;"><a href="chrome://webrtc-internals/" target="_blank">chrome://webrtc-internals/</a></p>
+    </section>
+
+    <section class="slide compact" style="position: relative;">
+        <h1>RTCPeerConnection (conti.)</h1>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                servers: [
+                {
+                    "urls":"stun:u1.xirsys.com"
+                }, {
+                    "username":"dec22e 00-a1ff-11e7-9bfc- ce8483d9a683",
+                    "urls":"turn:u1.xirsys.com:80?transport=udp",
+                    "credentia l":"dec22e78-a1ff-11e7-98bd-5f53926dfc20"
+                }
+                ...
+                ]
+            </code>
+        </pre>
     </section>
 
     <section class="slide compact"style="position: relative;">
@@ -179,195 +336,67 @@
                 <li>Secure - Stream Control Transmission Protocol (STCP) mandatory</li>
             </ul>
         </div>
-        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/rtcdatachannel/" target="_blank">simpl.info/rtcdatachannel/</a></p>
     </section>
-    <section class="slide compact rtc-slide">
-        <div class="rtc-flex-center" style="height: 100%;">
-            <h3>Signaling</h3>
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>WebRTC need these servers</h1>
-        <ul class="">
-            <li>Signaling Server</li>
-            <li>ICE Servers</li>
-            <li>Media Servers (optional)</li>
-        </ul>
-    </section>
-
-    <section class="slide compact">
-        <h1>Abstract Signaling</h1>
-        <div class="rtc-flex">
-            <ul class="">
-                <li>Need to exchange "session descriptop" objects</li>
-                <li>Can use any messaging mechanism</li>
-                <li>Can use any messaging protocal</li>
-            </ul>
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>Signaling plane</h1>
-        <div class="rtc-flex">
-            <ul class="">
-                <li>Session control messages used to open or close communication</li>
-                <li>Error messages</li>
-                <li>Media metadata such as codec settings, bandwidth and media types</li>
-                <li>Key data, used to establish secure connections</li>
-                <li>Network data, such as a host's IP address and port as seen by the outside world</li>
-            </ul>
+    <section class="slide compact"style="position: relative;">
+        <h1>Not Only Media – WebRTC Data Channels</h1>
+        <div style="font-size: 18px;" >
+            <p>• Enable exchange of arbitrary application data between peers</p>
+            <p>• Think WebSockets, but peer-to-peer</p>
+            <p>• Customizable delivery properties:</p>
+                <p>• Reliable or partially reliable delivery of sent messages</p>
+                <p>• In-order or out-of-order delivery of sent messages</p>
+                <p>• RTCDataChannel objects, created using RTCPeerConnection.createDataChannel()</p>
+            <p>• Some exciting ideas and use cases out there</p>
         </div>
     </section>
 
-    <section class="slide compact">
-        <h1>JSEP architecture - <a href="https://rtcweb-wg.github.io/jsep/">JavaScript Session Establishment Protocol</a></h1>
-        
+    <section class="slide compact"style="position: relative;">
+        <h1>The WebRTC Protocol Stack</h1>
+        <div style="font-size: 18px;" >
+            <p>• Peer-to-peer connection is established over UDP using ICE, STUN and TURN</p>
+            <p>• We can live without a few lost frames; low latency is more important</p>
+            <p>• DTLS (Datagram Transport Layer Security) is used to secure all data transfers between peers</p>
+            <p>• Unlike TLS, DTLS can be used over UDP</p>
+            <p>• Encryption is WebRTC’s mandatory feature</p>
+            <p>• SRTP (Secure Real-Time Protocol) is used to transport audio and video streams</p>
+            <p>• SCTP (Stream Control Transport Protocol) is used to transport application data</p>
+        </div>
+    </section> 
+
+    <section class="slide compact" style="position: relative;">
+        <h1>The WebRTC Protocol Stack (conti.)</h1>
         <div class="rtc-flex-center">
-            <img class="media-stream-img" src="pictures/jsep.png" />
+            <img style="width: 50%;"  src="pictures/DataChanel_Datagram.png" />
         </div>
     </section>
 
 
-    <section class="slide compact">
-        <h1>Clarification</h1>
-        <div class="rtc-flex-center">
-            <img class="media-stream-img" src="pictures/webrtc-on-mobile.jpg" />
-        </div>
+    <section class="slide compact"style="position: relative;">
+        <h1>RTCDataChannel</h1>
+        <pre style="font-size: 18px;" class="language-javascript line-numbers">
+            <code>
+                const pc = new RTCPeerConnection();
+                const dataChannel = pc.createDataChannel('sendDataChannel', {
+                    reliable: true;
+                });
+                dataChannel.onerror = (error) => {
+                    console.log('Channel Error:', error);
+                };
+                dataChannel.onmessage = (event) => {
+                    console.log('Got Message:', event.data);
+                };
+                dataChannel.send('Hello World!');
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide compact"style="position: relative;">
+        <h1>Resources</h1>
+        <p><a href="https://webrtc.github.io/samples/" target="_blank">Samples</a></p>
+        <p><a href="https://webrtc.org/" target="_blank">webrtc.org</a></p>
+        <p><a href="http://w3c.github.io/webrtc-pc/" target="_blank">w3c.github.io</a></p>
     </section>
     
-    <section class="slide compact">
-        <h1>Clarification</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/skype_triangle.png" />
-        </div>
-    </section>
-    
-    
-    <section class="slide compact">
-        <h1>Clarification</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/webrtc_triangle.jpg" />
-        </div>
-    </section>
-
-    <section class="slide compact rtc-slide">
-        <div class="rtc-flex-center" style="height: 100%;">
-            <h3>ICE / STUN / TURN</h3>
-        </div>
-    </section>
-
-    <section class="slide compact">
-        <h1>An ideal network</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/noSTUNorTURN.png" />
-        </div>
-    </section>
-    
-    <section class="slide compact">
-        <h1>Reality. Network Address Translation (NAT)</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/firewall.png" />
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>Port Address Translation (PAT)</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/NAT.jpg" />
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>Session Traversal Utilities for NAT (STUN)</h1>
-        <div class="rtc-flex">
-            <ul>
-                <li>Tell me what my public IP address is</li>
-                <li>Simple server, cheap to run</li>
-                <li>Data flows peer-to-peer</li>
-            </ul>
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>STUN</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/stun.png" />
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>Traversal Using Relays around NAT (TURN)</h1>
-        <div class="rtc-flex">
-            <ul>
-                <li>Provide a cloud fallback if peer-to-peer communication fails</li>
-                <li>Data is sent through server, uses server bandwidth</li>
-                <li>Ensures the call works in almost all environments</li>
-            </ul>
-        </div>
-    </section>
-    <section class="slide compact">
-        <h1>TURN</h1>
-        <div class="rtc-flex-center">
-            <img class="large-img" src="pictures/STUNandTURN.png" />
-        </div>
-    </section>
-
-    <section class="slide compact rtc-slide">
-        <div class="rtc-flex-center" style="height: 100%;">
-            <h3>Multi-party Confernecing</h3>
-        </div>
-    </section>
-
-    <section class="slide compact">
-        <h1>Peer-to-Peer Mesh with a Few Parties</h1>
-        <div class="rtc-flex" style="justify-content: space-between;">
-            <ul>
-                <li>Works for a few parties</li>
-                <li>No server cost</li>
-                <li>Lowest latency</li>
-            </ul>
-            <img class="large-img" src="pictures/peer-to-peer-mesh.png" style="width:40%; height: 40%; margin-right: 100px;" />
-        </div>
-        
-    </section>
-
-    <section class="slide compact">
-        <h1>Peer-to-Peer Mesh with Many Parties</h1>
-        <div class="rtc-flex" style="justify-content: space-between;">
-            <ul>
-                <li>Doesn’t scale for many parties</li>
-                <li>Heavy processing burden on all partiest</li>
-                <li>Massive bandwidth</li>
-            </ul>
-            <img src="pictures/peer-to-peer-with-many.png" style="width:50%; height: 50%;" />
-        </div>
-        
-    </section>
-
-    <section class="slide compact">
-        <h1>Multipoint Control Unit (MCU)</h1>
-        <div class="rtc-flex" style="justify-content: space-between;">
-            <ul>
-                <li>Provides scalability </li>
-                <li>Improves mobile performance</li>
-                <li>Dynamic back-end control</li>
-                <li>Least bandwidth & client processing MCU</li>
-            </ul>
-            <img src="pictures/MCU.png" style="width:50%; height: 50%;" />
-        </div>
-        
-    </section>
-
-    <section class="slide compact rtc-slide">
-        <div class="rtc-flex-center" style="height: 100%;">
-            <h3>Security</h3>
-        </div>
-    </section>
-
-    
-
-    <section class="slide compact">
-        <h1>Secure pathways</h1>
-        <p>Mandatory encryption for media and data</p>
-        <div class="rtc-flex-center">
-            <img src="pictures/securePathways.png" style="width:50%; height: 50%;"  />
-        </div>
-    </section>
 
     <section class="slide compact rtc-slide">
         <div class="rtc-flex-center" style="height: 100%;">

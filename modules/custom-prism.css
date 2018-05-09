@@ -29,5 +29,14 @@
     padding-left: 0;
 }
 
+.links {
+    color: #666;
+    font-size: 16px;
+}
+
+.links a {
+    color: #333;
+}
+
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
