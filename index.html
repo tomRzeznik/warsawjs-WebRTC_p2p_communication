@@ -20,7 +20,7 @@
 </head>
 <body class="shower list">
     <header class="caption">
-        <h1>WarsawJS Slides: WebRTC co, jak z czym</h1>
+        <h1>WarsawJS Slides: Overview</h1>
         <p>We talk about JavaScript. Each month in Warsaw, Poland.</p>
     </header>
 
@@ -63,7 +63,7 @@
         <ul class="">
             <li>Open Source, no royalties, license fees</li>
             <li>Real-time flexible voice, video and data framework in cross platform</li>
-            <li>Standard Web APIs Interoperable between browsers</li>
+            <li>Standard Web APIs Interoperable between browsers, W3C, IETF</li>
             <li>No Proprietary plug-in</li>
             <li>Security</li>
         </ul>
@@ -137,8 +137,12 @@
             <li>Minimizes effects of spec churn</li>
         </ul>
     </section>
-
-    <section class="slide compact">
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>WebRTC API</h3>
+        </div>
+    </section>
+    <section class="slide compact" >
         <h1>Three main RTC components</h1>
         <div class="rtc-flex">
             <ul class="">
@@ -147,6 +151,7 @@
                 <li>RTCDataChannel</li>
             </ul>
         </div>
+        
     </section>
 
     <section class="slide compact" style="position: relative;">
@@ -165,13 +170,22 @@
         <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/rtcpeerconnection/" target="_blank">simpl.info/rtcpeerconnection/</a></p>
     </section>
 
-    <section class="slide compact">
+    <section class="slide compact"style="position: relative;">
         <h1>RTCDataChannel</h1>
-        <div class="rtc-flex-center">
-
+        <div class="rtc-flex">                
+            <ul class="">
+                <li>Ultra-low latency</li>
+                <li>Unreliable or reliable</li>
+                <li>Secure - Stream Control Transmission Protocol (STCP) mandatory</li>
+            </ul>
+        </div>
+        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/rtcdatachannel/" target="_blank">simpl.info/rtcdatachannel/</a></p>
+    </section>
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>Signaling</h3>
         </div>
     </section>
-
     <section class="slide compact">
         <h1>WebRTC need these servers</h1>
         <ul class="">
@@ -262,7 +276,7 @@
     </section>
     <section class="slide compact">
         <h1>Session Traversal Utilities for NAT (STUN)</h1>
-        <div class="rtc-flex-center">
+        <div class="rtc-flex">
             <ul>
                 <li>Tell me what my public IP address is</li>
                 <li>Simple server, cheap to run</li>
@@ -277,8 +291,8 @@
         </div>
     </section>
     <section class="slide compact">
-        <h1>Session Traversal Utilities for NAT (STUN)</h1>
-        <div class="rtc-flex-center">
+        <h1>Traversal Using Relays around NAT (TURN)</h1>
+        <div class="rtc-flex">
             <ul>
                 <li>Provide a cloud fallback if peer-to-peer communication fails</li>
                 <li>Data is sent through server, uses server bandwidth</li>
@@ -290,6 +304,74 @@
         <h1>TURN</h1>
         <div class="rtc-flex-center">
             <img class="large-img" src="pictures/STUNandTURN.png" />
+        </div>
+    </section>
+
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>Multi-party Confernecing</h3>
+        </div>
+    </section>
+
+    <section class="slide compact">
+        <h1>Peer-to-Peer Mesh with a Few Parties</h1>
+        <div class="rtc-flex" style="justify-content: space-between;">
+            <ul>
+                <li>Works for a few parties</li>
+                <li>No server cost</li>
+                <li>Lowest latency</li>
+            </ul>
+            <img class="large-img" src="pictures/peer-to-peer-mesh.png" style="width:40%; height: 40%; margin-right: 100px;" />
+        </div>
+        
+    </section>
+
+    <section class="slide compact">
+        <h1>Peer-to-Peer Mesh with Many Parties</h1>
+        <div class="rtc-flex" style="justify-content: space-between;">
+            <ul>
+                <li>Doesn’t scale for many parties</li>
+                <li>Heavy processing burden on all partiest</li>
+                <li>Massive bandwidth</li>
+            </ul>
+            <img src="pictures/peer-to-peer-with-many.png" style="width:50%; height: 50%;" />
+        </div>
+        
+    </section>
+
+    <section class="slide compact">
+        <h1>Multipoint Control Unit (MCU)</h1>
+        <div class="rtc-flex" style="justify-content: space-between;">
+            <ul>
+                <li>Provides scalability </li>
+                <li>Improves mobile performance</li>
+                <li>Dynamic back-end control</li>
+                <li>Least bandwidth & client processing MCU</li>
+            </ul>
+            <img src="pictures/MCU.png" style="width:50%; height: 50%;" />
+        </div>
+        
+    </section>
+
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>Security</h3>
+        </div>
+    </section>
+
+    
+
+    <section class="slide compact">
+        <h1>Secure pathways</h1>
+        <p>Mandatory encryption for media and data</p>
+        <div class="rtc-flex-center">
+            <img src="pictures/securePathways.png" style="width:50%; height: 50%;"  />
+        </div>
+    </section>
+
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>Thanks you for listening</h3>
         </div>
     </section>
     <div class="progress"></div>
