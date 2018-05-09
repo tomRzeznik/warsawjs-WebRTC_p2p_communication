@@ -14,6 +14,15 @@
     font-style: normal;
 }
 
+h1 {
+    margin-bottom: 30px;
+
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
 .rtc-flex {
     display: flex;
 }
@@ -175,4 +184,8 @@ h4 {
 
 .media-stream-img {
     width: 80%;
+}
+
+.large-img {
+    width: 68%;
 }

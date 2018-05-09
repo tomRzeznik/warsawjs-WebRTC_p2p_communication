@@ -129,8 +129,18 @@
     </section>
 
     <section class="slide compact">
+        <h1>Adapter</h1>
+        <p>Same code in all browsers <a href="https://github.com/webrtc/adapter">adapter.js </a></p>
+        <ul class="">
+            <li>Remove vendor prefixes</li>
+            <li>Abstracts Chrome/Firefox differences</li>
+            <li>Minimizes effects of spec churn</li>
+        </ul>
+    </section>
+
+    <section class="slide compact">
         <h1>Three main RTC components</h1>
-        <div class="rtc-flex main-components">
+        <div class="rtc-flex">
             <ul class="">
                 <li>MediaStream</li>
                 <li>RTCPeerConnection</li>
@@ -139,18 +149,20 @@
         </div>
     </section>
 
-    <section class="slide compact">
+    <section class="slide compact" style="position: relative;">
         <h1>MediaStream (aka getUserMedia)</h1>
         <div class="rtc-flex-center">
             <img class="media-stream-img" src="pictures/media-stream.png" />
         </div>
+        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/getusermedia/" target="_blank">simpl.info/getusermedia/</a></p>
     </section>
 
-    <section class="slide compact">
+    <section class="slide compact" style="position: relative;">
         <h1>RTCPeerConnection</h1>
         <div class="rtc-flex-center">
-            <img class="media-stream-img" src="pictures/webrtc-architecture.png" />
+            <img style="width: 60%;"  src="pictures/webrtc-architecture.png" />
         </div>
+        <p style="position: absolute; bottom: 0;">Example: <a href="https://simpl.info/rtcpeerconnection/" target="_blank">simpl.info/rtcpeerconnection/</a></p>
     </section>
 
     <section class="slide compact">
@@ -161,21 +173,125 @@
     </section>
 
     <section class="slide compact">
+        <h1>WebRTC need these servers</h1>
+        <ul class="">
+            <li>Signaling Server</li>
+            <li>ICE Servers</li>
+            <li>Media Servers (optional)</li>
+        </ul>
+    </section>
+
+    <section class="slide compact">
         <h1>Abstract Signaling</h1>
         <div class="rtc-flex">
             <ul class="">
-                <li>Need to exchange "session descriptop" objects:
-                    <ul class="">
-                        <li>What formats I support, what I want to send</li>
-                        <li>Network information for peer-to-peer setup</li>
-                    </ul>
-                </li>
+                <li>Need to exchange "session descriptop" objects</li>
                 <li>Can use any messaging mechanism</li>
                 <li>Can use any messaging protocal</li>
             </ul>
         </div>
     </section>
+    <section class="slide compact">
+        <h1>Signaling plane</h1>
+        <div class="rtc-flex">
+            <ul class="">
+                <li>Session control messages used to open or close communication</li>
+                <li>Error messages</li>
+                <li>Media metadata such as codec settings, bandwidth and media types</li>
+                <li>Key data, used to establish secure connections</li>
+                <li>Network data, such as a host's IP address and port as seen by the outside world</li>
+            </ul>
+        </div>
+    </section>
 
+    <section class="slide compact">
+        <h1>JSEP architecture - <a href="https://rtcweb-wg.github.io/jsep/">JavaScript Session Establishment Protocol</a></h1>
+        
+        <div class="rtc-flex-center">
+            <img class="media-stream-img" src="pictures/jsep.png" />
+        </div>
+    </section>
+
+
+    <section class="slide compact">
+        <h1>Clarification</h1>
+        <div class="rtc-flex-center">
+            <img class="media-stream-img" src="pictures/webrtc-on-mobile.jpg" />
+        </div>
+    </section>
+    
+    <section class="slide compact">
+        <h1>Clarification</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/skype_triangle.png" />
+        </div>
+    </section>
+    
+    
+    <section class="slide compact">
+        <h1>Clarification</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/webrtc_triangle.jpg" />
+        </div>
+    </section>
+
+    <section class="slide compact rtc-slide">
+        <div class="rtc-flex-center" style="height: 100%;">
+            <h3>ICE / STUN / TURN</h3>
+        </div>
+    </section>
+
+    <section class="slide compact">
+        <h1>An ideal network</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/noSTUNorTURN.png" />
+        </div>
+    </section>
+    
+    <section class="slide compact">
+        <h1>Reality. Network Address Translation (NAT)</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/firewall.png" />
+        </div>
+    </section>
+    <section class="slide compact">
+        <h1>Port Address Translation (PAT)</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/NAT.jpg" />
+        </div>
+    </section>
+    <section class="slide compact">
+        <h1>Session Traversal Utilities for NAT (STUN)</h1>
+        <div class="rtc-flex-center">
+            <ul>
+                <li>Tell me what my public IP address is</li>
+                <li>Simple server, cheap to run</li>
+                <li>Data flows peer-to-peer</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide compact">
+        <h1>STUN</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/stun.png" />
+        </div>
+    </section>
+    <section class="slide compact">
+        <h1>Session Traversal Utilities for NAT (STUN)</h1>
+        <div class="rtc-flex-center">
+            <ul>
+                <li>Provide a cloud fallback if peer-to-peer communication fails</li>
+                <li>Data is sent through server, uses server bandwidth</li>
+                <li>Ensures the call works in almost all environments</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide compact">
+        <h1>TURN</h1>
+        <div class="rtc-flex-center">
+            <img class="large-img" src="pictures/STUNandTURN.png" />
+        </div>
+    </section>
     <div class="progress"></div>
 
     <footer class="badge">
